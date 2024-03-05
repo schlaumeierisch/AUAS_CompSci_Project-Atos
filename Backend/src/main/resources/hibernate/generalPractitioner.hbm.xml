@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping xmlns="http://www.hibernate.org/xsd/hibernate-mapping" default-access="field">
+    <class name="nl.hva.backend.domain.GeneralPractitioner" table="general_practitioner">
+
+        <id name="id" column="id" type="long">
+            <generator class="increment"/>
+        </id>
+
+        <component name="domainId" class="nl.hva.backend.domain.ids.GeneralPractitionerId">
+            <property name="id" column="general_practitioner_id" type="string"/>
+        </component>
+
+        <property name="firstName" column="first_name" type="string"/>
+        <property name="lastName" column="last_name" type="string"/>
+
+        <component name="address" class="nl.hva.backend.domain.value_objects.Address">
+            <property name="street" column="street" type="string"/>
+            <property name="zip" column="zip" type="string"/>
+            <property name="city" column="city" type="string"/>
+            <property name="country" column="country" type="string"/>
+        </component>
+
+        <property name="phoneNumber" column="phone_number" type="string"/>
+        <property name="email" column="email" type="string"/>
+
+        <property name="startTimeShift" column="start_time_shift" type="java.time.LocalTime"/>
+        <property name="endTimeShift" column="end_time_shift" type="java.time.LocalTime"/>
+        <property name="breakTimes" column="break_times" type="string"/>
+        <property name="breakDuration" column="break_duration" type="java.lang.Long"/>
+        <property name="appointmentDuration" column="appointment_duration" type="java.lang.Long"/>
+
+    </class>
+</hibernate-mapping>
